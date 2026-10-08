@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti, mi amor ❤️ - 8 Meses</title>
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --primary: #ff3366;
+            --secondary: #ff758c;
+            --text-color: #f1f1f1;
+            --text-muted: #b0b0b0;
+            --border-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fondo con corazones animados */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 51, 102, 0.2);
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Contenedor Principal de Fases */
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 600px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .stage {
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .stage.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary);
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* Botones Románticos */
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 51, 102, 0.6);
+        }
+
+        /* Galería de Fotos Corregida (.jpeg) */
+        .photo-container {
+            position: relative;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            max-height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .photo-caption {
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn-secondary {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-secondary:hover {
+            background: #444;
+        }
+
+        /* Vales de Amor Interactivos */
+        .coupon-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .coupon {
+            background: #222;
+            border: 2px dashed var(--primary);
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .coupon:hover {
+            background: #2a1a20;
+        }
+
+        .coupon h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .coupon p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fondo de corazones flotantes -->
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <!-- ETAPA 1: Bienvenida -->
+    <div class="container stage active" id="stage-1">
+        <h1>¡Felices 8 Meses, Mi Amor! ❤️</h1>
+        <p>Preparé este pequeño rincón digital solo para ti, para recordarte cuánto te amo y lo especiales que han sido estos meses a tu lado.</p>
+        <button class="btn" onclick="nextStage(2)">Abrir mi regalito 💌</button>
+    </div>
+
+    <!-- ETAPA 2: Galería de Fotos 1 -->
+    <div class="container stage" id="stage-2">
+        <h2>Nuestros Momentos</h2>
+        <div class="photo-container">
+            <img src="foto1.jpeg" alt="Nuestra foto 1">
+        </div>
+        <p class="photo-caption">"Cada momento a tu lado es mi lugar favorito en el mundo entero."</p>
+        <div class="nav-buttons">
+            <button class="btn-secondary" onclick="nextStage(1)">Anterior</button>
+            <button class="btn" onclick="nextStage(3)">Siguiente</button>
+        </div>
+    </div>
+
+    <!-- ETAPA 3: Galería de Fotos 2 -->
+    <div class="container stage" id="stage-3">
+        <h2>Nuestra Complicidad</h2>
+        <div class="photo-container">
+            <img src="foto2.jpeg" alt="Nuestra foto 2">
+        </div>
+        <p class="photo-caption">"Gracias por abrazarme, cuidarme y ser mi paz en los días difíciles."</p>
+        <div class="nav-buttons">
+            <button class="btn-secondary" onclick="nextStage(2)">Anterior</button>
+            <button class="btn" onclick="nextStage(4)">Siguiente</button>
+        </div>
+    </div>
+
+    <!-- ETAPA 4: Galería de Fotos 3 -->
+    <div class="container stage" id="stage-4">
+        <h2>Nuestras Locuras</h2>
+        <div class="photo-container">
+            <img src="foto3.jpeg" alt="Nuestra foto 3">
+        </div>
+        <p class="photo-caption">"Contigo hasta las tonterías más divertidas se convierten en mis mejores recuerdos."</p>
+        <div class="nav-buttons">
+            <button class="btn-secondary" onclick="nextStage(3)">Anterior</button>
+            <button class="btn" onclick="nextStage(5)">Continuar</button>
+        </div>
+    </div>
+
+    <!-- ETAPA 5: Agradecimiento y Sentimiento -->
+    <div class="container stage" id="stage-5">
+        <h2>Lo que significas para mí</h2>
+        <p>Amor, quiero agradecerte por todo tu apoyo incondicional, por tu paciencia y por creer en mí siempre. Eres una persona increíblemente hermosa por dentro y por fuera. Estos 8 meses han sido maravillosos gracias a tu sonrisa y tu forma de ser. Prometo seguir esforzándome para hacerte muy feliz cada día.</p>
+        <div class="nav-buttons">
+            <button class="btn-secondary" onclick="nextStage(4)">Anterior</button>
+            <button class="btn" onclick="nextStage(6)">Ver Vales 🎁</button>
+        </div>
+    </div>
+
+    <!-- ETAPA 6: Vales de Amor Canjeables -->
+    <div class="container stage" id="stage-6">
+        <h2>Vales Canjeables</h2>
+        <p>Toca cualquier vale para reclamarlo cuando quieras:</p>
+        <div class="coupon-grid">
+            <div class="coupon" onclick="claimCoupon(this, '¡Valido por un fuerte abrazo y apapacho sin límite de tiempo!')">
+                <h3>🎟️ Vale por un abrazo eterno</h3>
+                <p>Canjeable en cualquier momento que lo necesites.</p>
+            </div>
+            <div class="coupon" onclick="claimCoupon(this, '¡Valido por una salida a comer tu postre o antojo favorito!')">
+                <h3>🎟️ Vale por un antojo</h3>
+                <p>Yo invito lo que quieras comer hoy.</p>
+            </div>
+            <div class="coupon" onclick="claimCoupon(this, '¡Valido por una maratón de tu película o serie favorita con snacks!')">
+                <h3>🎟️ Vale por una noche de pelis</h3>
+                <p>Tú eliges la película y yo pongo los snacks.</p>
+            </div>
+        </div>
+        <div class="nav-buttons">
+            <button class="btn-secondary" onclick="nextStage(5)">Anterior</button>
+            <button class="btn" onclick="nextStage(1)">Volver al inicio 💖</button>
+        </div>
+    </div>
+
+    <script>
+        // Cambiar entre etapas
+        function nextStage(stageNum) {
+            document.querySelectorAll('.stage').forEach(el => el.classList.remove('active'));
+            document.getElementById('stage-' + stageNum).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mensaje al reclamar un vale
+        function claimCoupon(element, message) {
+            alert(message + " ❤️ (Tómale captura y mándamelo)");
+            element.style.opacity = "0.5";
+            element.style.pointerEvents = "none";
+        }
+
+        // Generar corazones flotantes automáticos en el fondo
+        function createHeart() {
+            const bg = document.getElementById('heartsBg');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+            bg.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>
